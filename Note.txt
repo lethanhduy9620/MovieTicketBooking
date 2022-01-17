@@ -1,0 +1,33 @@
+Technology:
+- React-Hook 
+- redux
+- redux-thunk
+- Bootstrap - version - 4.6.1
+- Jquery
+- Popper.js
+- Axios
+
+Version template đang dùng:
+Bootstrap v3.3.7 
+ Dropdownhover v1.0.0 (http://bs-dropdownhover.kybarg.com) (Chưa cài vào NPM)
+# Semantic UI - 2.2.10 (Chưa cài vào NPM)
+ * https://github.com/Semantic-Org/Semantic-UI
+ * http://www.semantic-ui.com/
+#
+Slick - version: 1.6.0
+Jquery - version:3.1.1
+
+
+
+
+Organization:
+- Mỗi thư mục sẽ chứa một component chính của website: 
++ VD: phần ThongTinPhim sẽ có một thư mục riêng. 
+
+- Mỗi thư mục chính sẽ bao bồm các thư mục con như sau:
++ _component: chứa các component nhỏ hơn dùng cho các phần nằm trong thư mục cha chứa nó.
++ reducer: chứa file index.js là reducer của component chính của thư mục cha.
++ actions: chứa các actions dùng để dispatch lên reducer
++ constants: chứa các tên mặc định dùng chung cho reducer và actions
+
+- Các service liên quan đến axios dùng để gọi API được để trong file Utils
