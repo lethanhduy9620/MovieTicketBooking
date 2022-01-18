@@ -1,11 +1,18 @@
-import PhimDangChieu from "./container/PhimDangChieu";
+import PageNotFound from "./container/PageNotFound";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { renderRoutesHome } from "./routes";
+
 
 
 function App() {
   return (
-    <div className="App">
-      <PhimDangChieu />
-    </div>
+    <BrowserRouter>
+      <Switch>
+        {renderRoutesHome()}
+
+        <Route path="" component={PageNotFound} />
+      </Switch>
+    </BrowserRouter >
   );
 }
 

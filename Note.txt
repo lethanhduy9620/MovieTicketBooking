@@ -1,3 +1,5 @@
+Swagger New: https://movienew.cybersoft.edu.vn/swagger/index.html?fbclid=IwAR3UdHZSRVe2Cv7e6l6C5Oa7bRq_mtaOFUjhbDUR90ZNkc4cThxivHF9Skc
+
 Technology:
 - React-Hook 
 - redux
@@ -17,9 +19,6 @@ Bootstrap v3.3.7
 Slick - version: 1.6.0
 Jquery - version:3.1.1
 
-
-
-
 Organization:
 - Mỗi thư mục sẽ chứa một component chính của website: 
 + VD: phần ThongTinPhim sẽ có một thư mục riêng. 
@@ -31,3 +30,4 @@ Organization:
 + constants: chứa các tên mặc định dùng chung cho reducer và actions
 
 - Các service liên quan đến axios dùng để gọi API được để trong file Utils
+

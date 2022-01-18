@@ -1,0 +1,4 @@
+18/1/2022  - @Author: Duy
+- Render danh sách phim đang chiếu
+- Configure cấu hình Reducer, Axios
+
