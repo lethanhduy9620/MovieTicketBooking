@@ -3,6 +3,7 @@
 import TrangHome from "../container/PublicPage/TrangHome";
 import PhimDangChieu from "../container/PublicPage/PhimDangChieu";
 import PublicPage from "../container/PublicPage";
+import ChiTietPhim from "../container/PublicPage/ChiTietPhim";
 
 
 //routes of Public pages for Users
@@ -19,6 +20,12 @@ const routesHome = [
         path: "/phim-dang-chieu",
         component: PhimDangChieu,
     },
+    {
+        //Trang Chi Tiet Phim
+        exact: false,
+        path: "/chi-tiet-phim",
+        component: ChiTietPhim,
+    }
 ];
 
 //routes of Admin
