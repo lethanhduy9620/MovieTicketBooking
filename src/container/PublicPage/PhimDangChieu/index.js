@@ -16,7 +16,7 @@ export default function PhimDangChieu() {
     }, [])
 
     const renderDSPhimDangChieu = () => {
-        return data.map((phim) => {
+        return data?.map((phim) => {
             return <ThePhim
                 key={phim.maPhim}
                 phim={phim}
