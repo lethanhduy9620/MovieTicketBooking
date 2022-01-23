@@ -2,3 +2,11 @@
 - Render danh sách phim đang chiếu
 - Configure cấu hình Reducer, Axios
 
+19/1/2022 -@Author: Tuan
+- Tạo Navbar
+- Tạo PublicPageTemplate
+- Xử lý router cho Navbar
+
+23/1/2022 -@Author: Tuan
+- Tạo carousel trang home
+- Tạo danh sách phim đang chiếu trang home

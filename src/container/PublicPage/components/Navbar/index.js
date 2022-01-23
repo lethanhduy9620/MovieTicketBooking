@@ -40,7 +40,7 @@ export default function Navbar() {
 
 
     return (
-        <AppBar position="static" sx={{ bgcolor: 'text.primary' }}>
+        <AppBar position="absolute" sx={{ bgcolor: 'transparent', boxShadow: 'none' }}>
             <Container maxWidth="lg">
                 <Toolbar disableGutters>
                     <Link
