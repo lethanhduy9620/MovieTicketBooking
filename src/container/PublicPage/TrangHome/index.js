@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import CarouselComp from './_component/Carousel';
+import DanhSachPhimComp from './_component/DanhSachPhim';
 
 export default function TrangHome() {
     return (
-        <div>
-            Trang Home
-        </div>
+        <main>
+            <CarouselComp />
+            <DanhSachPhimComp />
+        </main>
     )
 }
