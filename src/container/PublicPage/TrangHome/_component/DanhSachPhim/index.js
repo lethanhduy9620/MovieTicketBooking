@@ -63,17 +63,21 @@ export default function DanhSachPhimComp() {
 
     const loading = useSelector(state => state.homePhimDangChieuReducer.loading)
     const dataPhim = useSelector(state => state.homePhimDangChieuReducer.dataPhim)
-    const error = useSelector(state => state.homePhimDangChieuReducer.error)
 
     const renderDSPhimDangChieu = () => {
         return dataPhim?.content?.items?.map((phim, index) => {
-            return <ThePhim phim={phim} key={index} />
+            if (phim.dangChieu) return <ThePhim phim={phim} key={index} />
+        })
+    }
+
+    const renderDSPhimSapChieu = () => {
+        return dataPhim?.content?.items?.map((phim, index) => {
+            if (phim.sapChieu) return <ThePhim phim={phim} key={index} />
         })
     }
 
     if (loading) return <Loader />
     return (
-        // #020d18
         <section style={{ backgroundColor: '#020d18' }}>
             <ThemeProvider theme={theme}>
                 <Container maxWidth='lg' sx={{ py: 5 }}>
@@ -90,7 +94,11 @@ export default function DanhSachPhimComp() {
                                     {renderDSPhimDangChieu()}
                                 </div>
                             </TabPanel>
-                            <TabPanel value="2">Item Two</TabPanel>
+                            <TabPanel value="2">
+                                <div className='row'>
+                                    {renderDSPhimSapChieu()}
+                                </div>
+                            </TabPanel>
                         </TabContext>
                     </Box>
                 </Container>
