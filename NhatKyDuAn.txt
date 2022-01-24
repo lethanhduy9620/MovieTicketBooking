@@ -2,3 +2,7 @@
 - Render danh sách phim đang chiếu
 - Configure cấu hình Reducer, Axios
 
+24/1/2022 -@Author: Tuan
+- Render trang chủ
+- Render component Navbar, Footer
+- Chỉnh lại render danh sách phim đang chiếu cho đúng

@@ -6,7 +6,7 @@ const actFetchPhim = () => {
         dispatch(actPhimRequest());
 
         api
-            .get('QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=GP05&soTrang=1&soPhanTuTrenTrang=6')
+            .get('QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=GP05&soTrang=1&soPhanTuTrenTrang=16')
             .then(result => {
                 dispatch(actPhimSuccess(result.data));
             })
