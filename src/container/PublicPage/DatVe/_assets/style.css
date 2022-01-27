@@ -1,0 +1,74 @@
+#screen {
+    display: block;
+    font-family: "Dosis", sans-serif;
+    color: #000;
+    position: relative;
+    text-align: center;
+    padding: 5px 0;
+    margin: 15px 0;
+}
+#screen::after {
+    display: block;
+    content: "";
+    position: absolute;
+    background-color: grey;
+    height: 3px;
+    width: 450px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.ghe {
+    display: inline-block;
+    margin: 0 20px 0 0;
+    padding-left: 25px;
+    position: relative;
+}
+
+.ghe::before {
+    display: block;
+    content: "";
+    width: 23px;
+    height: 23px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    border-radius: 4px;
+}
+
+.gheDangChon::before {
+    background-color: #79c71c;
+}
+
+.gheDaDat::before {
+    background-color: #e41b00;
+}
+
+.gheTrong::before {
+    background-color: #dbdfe2;
+}
+
+.chiTietHeading {
+    color: #fff;
+    padding-bottom: 10px;
+    border-bottom: solid 1px;
+}
+.chiTiet {
+    color: #fff;
+    padding: 10px 0;
+    border-bottom: 1px solid gray;
+}
+.chiTiet span {
+    display: inline-block;
+}
+.chiTiet span:first-child {
+    margin-right: 5px;
+    font-weight: 700;
+}
+.chiTietTitle {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 0;
+}

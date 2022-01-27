@@ -10,3 +10,12 @@
 23/1/2022 -@Author: Tuan
 - Tạo carousel trang home
 - Tạo danh sách phim đang chiếu trang home
+
+24/1/2022 -@Author: Tuan
+- Tạo Footer
+- Chỉnh lại trang danh sách phim đang chiếu
+
+27/1/2022 -@Author: Tuan
+- Tạo trang Đặt vé
+- Xử lý tính năng render thông tin phòng vé, chọn ghế
+- Còn tính năng mua vé đang chờ hoàn thành chức năng đăng nhập
