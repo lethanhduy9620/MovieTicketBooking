@@ -6,3 +6,7 @@
 - Render trang chủ
 - Render component Navbar, Footer
 - Chỉnh lại render danh sách phim đang chiếu cho đúng
+
+27/1/2022 -@Author: Tuan
+- Tạo trang Đặt vé
+- Render thông tin phòng vé, chức năng chọn ghế

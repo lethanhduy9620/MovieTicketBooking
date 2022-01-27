@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react';
+import { Container } from '@mui/material';
 
 export default function Footer() {
     return <Fragment>
         <footer className="ht-footer">
-            <div className="container">
+            <Container maxWidth='lg'>
                 <div className="flex-parent-ft">
                     <div className="flex-child-ft item1">
-                        <a href="index-2.html"><img className="logo" src="images/logo1.png" alt /></a>
+                        <a href="#"><img className="logo" src="/images/logo1.png" alt='' /></a>
                         <p>5th Avenue st, manhattan<br />
                             New York, NY 10001</p>
                         <p>Call us: <a href="#">(+01) 202 342 6789</a></p>
@@ -48,7 +49,7 @@ export default function Footer() {
                         <a href="#" className="btn">Subscribe now <i className="ion-ios-arrow-forward" /></a>
                     </div>
                 </div>
-            </div>
+            </Container>
             <div className="ft-copyright">
                 <div className="ft-left">
                     <p><a target="_blank" href="https://www.templateshub.net">Templates Hub</a></p>

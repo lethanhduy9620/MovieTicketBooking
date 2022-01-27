@@ -1,8 +1,7 @@
-// import { Route } from "react-router-dom";
-// import { Fragment } from "react";
 import TrangHome from "../container/PublicPage/TrangHome";
 import PhimDangChieu from "../container/PublicPage/PhimDangChieu";
 import PublicPage from "../container/PublicPage";
+import DatVe from "../container/PublicPage/DatVe";
 
 
 //routes of Public pages for Users
@@ -18,6 +17,12 @@ const routesHome = [
         exact: false,
         path: "/phim-dang-chieu",
         component: PhimDangChieu,
+    },
+    {
+        // Trang Dat Ve
+        exact: false,
+        path: "/dat-ve/:maPhim",
+        component: DatVe,
     },
 ];
 

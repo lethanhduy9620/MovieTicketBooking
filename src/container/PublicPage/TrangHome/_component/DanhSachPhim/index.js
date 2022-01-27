@@ -41,7 +41,9 @@ const theme = createTheme({
                     '& .row a': {
                         color: '#fff',
                         fontFamily: '"Dosis", sans-serif',
-                    }
+                    },
+                    paddingLeft: 0,
+                    paddingRight: 0
                 }
             }
         }
