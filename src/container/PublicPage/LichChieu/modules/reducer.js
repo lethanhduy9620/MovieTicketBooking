@@ -6,19 +6,19 @@ let initialState = {
     error: null,
 };
 
-const dsPhimDangChieuReducer = (state = initialState, action) => {
+const lichChieuPhimReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ActionType.REQUEST_DS_PHIM_DANG_CHIEU:
+        case ActionType.REQUEST_LICH_CHIEU_PHIM:
             state.loading = true;
             state.data = null;
             state.error = null;
             return { ...state };
-        case ActionType.REQUEST_DS_PHIM_DANG_CHIEU_SUCCESS:
+        case ActionType.REQUEST_LICH_CHIEU_PHIM_SUCCESS:
             state.loading = false;
             state.data = action.payload;
             state.error = null;
             return { ...state };
-        case ActionType.REQUEST_DS_PHIM_DANG_CHIEU_FAIL:
+        case ActionType.REQUEST_LICH_CHIEU_PHIM_FAIL:
             state.loading = false;
             state.data = null;
             state.error = action.payload;
@@ -28,4 +28,6 @@ const dsPhimDangChieuReducer = (state = initialState, action) => {
     };
 };
 
-export default dsPhimDangChieuReducer;
+export default lichChieuPhimReducer;
+
+

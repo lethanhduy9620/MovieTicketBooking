@@ -2,3 +2,13 @@
 - Render danh sách phim đang chiếu
 - Configure cấu hình Reducer, Axios
 
+20/1/2022
+- Hoàn thành trang phim sắp chiếu, phim đang chiếu
+
+21/1/2022
+- Hoàn thành render lịch chiếu theo phim đang chiếu
+- * Hoàn thành chức năng đăng nhập và đăng ký
+
+25/1/2022
+- Chỉnh lại cửa sổ đặt vé bằng thư viện của bootstrap
+- Làm chức năng đăng nhập và đăng ký

@@ -1,9 +1,11 @@
 // import { Route } from "react-router-dom";
 // import { Fragment } from "react";
 import TrangHome from "../container/PublicPage/TrangHome";
-import PhimDangChieu from "../container/PublicPage/PhimDangChieu";
+import DanhSachPhim from "../container/PublicPage/DanhSachPhim";
 import PublicPage from "../container/PublicPage";
 import ChiTietPhim from "../container/PublicPage/ChiTietPhim";
+import DangNhap from "../container/PublicPage/DangNhapDangKy/DangNhap/DangNhap";
+import DangKy from "../container/PublicPage/DangNhapDangKy/DangKy/DangKy";
 
 
 //routes of Public pages for Users
@@ -18,14 +20,33 @@ const routesHome = [
         //Trang Phim Dang Chieu
         exact: false,
         path: "/phim-dang-chieu",
-        component: PhimDangChieu,
+        component: DanhSachPhim,
+    },
+    {
+        //Trang Phim Sap Chieu
+        exact: false,
+        path: "/phim-sap-chieu",
+        component: DanhSachPhim,
     },
     {
         //Trang Chi Tiet Phim
         exact: false,
-        path: "/chi-tiet-phim",
+        path: "/chi-tiet-phim/:id",
         component: ChiTietPhim,
-    }
+    },
+    {
+        //Trang Dang Nhap
+        exact: false,
+        path: "/dang-nhap",
+        component: DangNhap,
+    },
+    {
+        //Trang Dang KY
+        exact: false,
+        path: "/dang-ky",
+        component: DangKy,
+    },
+
 ];
 
 //routes of Admin

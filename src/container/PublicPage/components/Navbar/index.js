@@ -24,7 +24,7 @@ export default function Navbar() {
         },
         {
             name: 'PHIM SẮP CHIẾU',
-            path: '/'
+            path: '/phim-sap-chieu'
         }
     ];
 
@@ -171,6 +171,7 @@ export default function Navbar() {
                                 bgcolor: '#dcf836',
                             }
                         }}
+                            href="/dang-nhap"
                         >
                             Đăng nhập
                         </Button>

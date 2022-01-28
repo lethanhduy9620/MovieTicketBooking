@@ -12,6 +12,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.min.js";
 // Configuration của React
+import './css/style_customize.css';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";

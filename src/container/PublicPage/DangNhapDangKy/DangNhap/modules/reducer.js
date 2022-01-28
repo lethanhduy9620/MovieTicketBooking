@@ -6,28 +6,26 @@ let initialState = {
     error: null,
 };
 
-const chiTietPhimReducer = (state = initialState, action) => {
+const dangNhapReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ActionType.REQUEST_CHI_TIET_PHIM:
+        case ActionType.RESQUEST_DANG_NHAP:
             state.loading = true;
             state.data = null;
             state.error = null;
             return { ...state };
-        case ActionType.REQUEST_CHI_TIET_PHIM_SUCCESS:
+        case ActionType.RESQUEST_DANG_NHAP_SUCCESS:
             state.loading = false;
             state.data = action.payload;
             state.error = null;
             return { ...state };
-        case ActionType.REQUEST_CHI_TIET_PHIM_FAIL:
+        case ActionType.RESQUEST_DANG_NHAP_FAIL:
             state.loading = false;
             state.data = null;
             state.error = action.payload;
             return { ...state };
         default:
             return { ...state };
-    };
-};
+    }
+}
 
-export default chiTietPhimReducer;
-
-
+export default dangNhapReducer;
