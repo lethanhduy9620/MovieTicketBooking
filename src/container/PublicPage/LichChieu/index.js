@@ -4,7 +4,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useSelector } from 'react-redux';
 import CardsRapChieu from './_components/CardsRapChieu';
 import Loader from '../components/Loader';
-import { minHeight } from '@mui/system';
 
 
 //Ẩn cửa số lịch chiếu
@@ -61,7 +60,8 @@ const filterLichChieu = (dataLichChieu, optionState) => {
                         ngayChieuGioChieu = new Date(ngayChieuGioChieu);
                         if (isSameDay(optionState.ngayChieu, ngayChieuGioChieu)) {
                             let gioChieu = ngayChieuGioChieu.getHours() + ":" + ngayChieuGioChieu.getMinutes();
-                            return lichChieu1Rap.lichChieu.push(gioChieu);
+                            let maLichChieu = lichChieu.maLichChieu;
+                            return lichChieu1Rap.lichChieu.push({ maLichChieu, gioChieu });
                         }
                     })
                 }
@@ -70,7 +70,7 @@ const filterLichChieu = (dataLichChieu, optionState) => {
         }
     });
 
-    return <CardsRapChieu dsLichChieuCacRap={dsLichChieuCacRap} />
+    return dsLichChieuCacRap
 };
 
 const LichChieu = forwardRef(({ }, lichChieuEvent) => {
@@ -136,7 +136,7 @@ const LichChieu = forwardRef(({ }, lichChieuEvent) => {
                 </div>
 
                 <div className='lich-chieu-chi-tiet'>
-                    {data?.heThongRapChieu && filterLichChieu(data.heThongRapChieu, optionState)}
+                    {data?.heThongRapChieu && <CardsRapChieu dsLichChieuCacRap={filterLichChieu(data.heThongRapChieu, optionState)} />}
                 </div>
             </div>
             <div className='lich-chieu-overlay' onClick={() => { hideLichChieu(lichChieuEvent) }}>

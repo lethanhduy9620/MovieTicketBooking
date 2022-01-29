@@ -12,8 +12,6 @@ export default function ChiTietPhim(props) {
     const dispatch = useDispatch();
     const { id } = props.match.params;
 
-    console.log(data);
-
     //DOM Lich Chieu Container
     const lichChieuEvent = useRef(null);
 
@@ -68,7 +66,7 @@ export default function ChiTietPhim(props) {
                     </div>
                 </div>
             </div>
-            <LichChieu ref={lichChieuEvent} />
+            <LichChieu ref={lichChieuEvent} props={props} />
         </>
     );
 }

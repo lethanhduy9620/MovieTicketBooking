@@ -5,10 +5,13 @@ import Ghe from './_component/Ghe';
 import './_assets/style.css';
 import { actPhongVeGetData } from './modules/action';
 import Loader from '../components/Loader';
+import { useHistory } from 'react-router-dom';
 
 export default function DatVe(props) {
 
     const dispatch = useDispatch();
+    const history = useHistory();
+
 
     useEffect(() => {
         const { maPhim } = props.match.params;
@@ -40,6 +43,10 @@ export default function DatVe(props) {
             tong += gheChon.giaVe;
         })
         return tong;
+    }
+
+    if (!localStorage.getItem('GeneralUser')) {
+        history.replace('/dang-nhap');
     }
 
     if (loading) return <Loader />
