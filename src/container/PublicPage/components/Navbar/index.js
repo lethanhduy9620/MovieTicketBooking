@@ -40,7 +40,7 @@ export default function Navbar() {
 
 
     return (
-        <AppBar position="static" sx={{ bgcolor: 'text.primary' }}>
+        <AppBar position="absolute" sx={{ bgcolor: 'transparent', boxShadow: 'none' }}>
             <Container maxWidth="lg">
                 <Toolbar disableGutters>
                     <Link
@@ -59,7 +59,7 @@ export default function Navbar() {
                                 py: 3
                             }}
                         >
-                            <img src='./images/logo1.png' alt='' />
+                            <img src='/images/logo1.png' alt='' />
                         </Typography>
                     </Link>
 
@@ -125,7 +125,7 @@ export default function Navbar() {
                             noWrap
                             component="div"
                         >
-                            <img src='./images/logo1.png' alt='' />
+                            <img src='/images/logo1.png' alt='' />
                         </Typography>
                     </Link>
                     <Box

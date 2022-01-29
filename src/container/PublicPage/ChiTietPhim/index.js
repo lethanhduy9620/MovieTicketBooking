@@ -12,6 +12,8 @@ export default function ChiTietPhim(props) {
     const dispatch = useDispatch();
     const { id } = props.match.params;
 
+    console.log(data);
+
     //DOM Lich Chieu Container
     const lichChieuEvent = useRef(null);
 
@@ -53,7 +55,7 @@ export default function ChiTietPhim(props) {
                                     <li>Ngôn ngữ:<span>Lorem ipsum dolor sit amet consectetur</span> </li>
                                     <li>Rated: <span>Lorem ipsum dolor sit amet consectetur</span> </li>
                                 </ul>
-                                <button className='btn btn-success' onClick={onClickMuaVeBtn}>Mua Vé</button>
+                                {data?.sapChieu !== true && <button className='btn btn-success' onClick={onClickMuaVeBtn}>Mua Vé</button>}
                             </div>
                         </div>
                     </div>
@@ -64,9 +66,6 @@ export default function ChiTietPhim(props) {
                             {data?.moTa}
                         </p>
                     </div>
-                    {/* <div className="movie-schedule-cyber text-white">
-                        <h3>Lịch chiếu phim</h3>
-                    </div> */}
                 </div>
             </div>
             <LichChieu ref={lichChieuEvent} />
