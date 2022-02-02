@@ -19,3 +19,6 @@
 - Tạo trang Đặt vé
 - Xử lý tính năng render thông tin phòng vé, chọn ghế
 - Còn tính năng mua vé đang chờ hoàn thành chức năng đăng nhập
+
+2/2/2022 -@Author: Tuan
+- Tạo trang AdminPage, Dashboard, Customers, Movies
