@@ -1,6 +1,6 @@
 import PageNotFound from "./container/PageNotFound";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { renderRoutesHome } from "./routes";
+import { renderRoutesAdmin, renderRoutesHome } from "./routes";
 
 // REACT-SLICK
 import "slick-carousel/slick/slick.css";
@@ -13,6 +13,7 @@ function App() {
     <BrowserRouter>
       <Switch>
         {renderRoutesHome()}
+        {renderRoutesAdmin()}
 
         <Route path="" component={PageNotFound} />
       </Switch>
