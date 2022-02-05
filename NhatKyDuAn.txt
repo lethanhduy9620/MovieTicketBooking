@@ -24,3 +24,6 @@
 
 2/2/2022 -@Author: Tuan
 - Tạo trang AdminPage, Dashboard, Customers, Movies
+
+5/2/2022 -@Author: Tuan
+- Xử lý render danh sách người dùng trang Customers
