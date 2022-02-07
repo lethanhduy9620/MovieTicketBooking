@@ -29,3 +29,6 @@
 6/2/2022 -@Author: Tuan
 - Tạo trang Sign In admin
 - Xử lý đăng nhập admin
+
+7/2/2022 -@Author: Tuan
+- Fix lỗi đăng nhập admin
