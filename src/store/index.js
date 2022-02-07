@@ -7,6 +7,8 @@ import dangKyReducer from "../container/PublicPage/DangNhapDangKy/DangKy/modules
 import bannerReducer from "../container/PublicPage/TrangHome/_component/Carousel/modules/reducer";
 import homePhimDangChieuReducer from "../container/PublicPage/TrangHome/_component/DanhSachPhim/modules/reducer";
 import datVeReducer from "../container/PublicPage/DatVe/modules/reducer";
+import customerReducer from "../container/AdminPage/Customers/modules/reducer";
+import authReducer from "../container/AdminPage/AuthPage/modules/reducer";
 
 const rootReducer = combineReducers({
     bannerReducer,
@@ -17,6 +19,8 @@ const rootReducer = combineReducers({
     dangNhapReducer,
     dangKyReducer,
     datVeReducer,
+    customerReducer,
+    authReducer
 });
 
 export default rootReducer;
