@@ -30,34 +30,12 @@ export default function AuthPage(props) {
     }
 
     const noti = () => {
-        return error && <div className='alert alert-danger'>{error.response.data}</div>
+        // return error && <Typography sx={{ bgcolor: '#f8d7da', color: '#721c24' }}>{error.response.data.content}</Typography>
+        if (error) return <Typography sx={{ bgcolor: '#f8d7da', color: '#721c24', mt: 1, fontSize: '14px' }}>{error.response.data.content}</Typography>;
     }
 
     if (loading) return <Loader></Loader>
 
-    // return (
-    //     <div className="container py-5">
-    //         <div className="row">
-    //             <div className="col-md-6 mx-auto">
-    //                 <h3 className='text-center'>Sign in</h3>
-    //                 {noti()}
-    //                 <form onSubmit={handleLogin}>
-    //                     <div className="form-group">
-    //                         <label>Username</label>
-    //                         <input type="text" className="form-control" name="taiKhoan" onChange={handleOnchange} />
-    //                     </div>
-    //                     <div className="form-group">
-    //                         <label>Password</label>
-    //                         <input type="text" className="form-control" name="matKhau" onChange={handleOnchange} />
-    //                     </div>
-    //                     <button type="submit" className="btn btn-success">
-    //                         Login
-    //                     </button>
-    //                 </form>
-    //             </div>
-    //         </div>
-    //     </div>
-    // )
     return (
         <Fragment>
             <Box
@@ -71,7 +49,7 @@ export default function AuthPage(props) {
             >
                 <Container maxWidth="sm">
                     <form onSubmit={handleLogin}>
-                        <Box sx={{ my: 3 }}>
+                        <Box sx={{ mt: 3 }}>
                             <Typography
                                 color="textPrimary"
                                 variant="h4"
@@ -82,6 +60,7 @@ export default function AuthPage(props) {
                             >
                                 Sign in
                             </Typography>
+                            {noti()}
                         </Box>
                         <TextField
                             fullWidth

@@ -16,10 +16,12 @@ export const actAuth = (loginInfo, history) => {
             .post('QuanLyNguoiDung/DangNhap', loginInfo)
             .then(result => {
                 // check maLoaiNguoiDung
-                if (result.data.maLoaiNguoiDung === "KhachHang") {
+                if (result.data.content.maLoaiNguoiDung === "KhachHang") {
                     return Promise.reject({
                         response: {
-                            data: 'Thông tin đăng nhập không hợp lệ',
+                            data: {
+                                content: 'Bạn không có quyền truy cập trang web này',
+                            }
                         }
                     });
                 }
