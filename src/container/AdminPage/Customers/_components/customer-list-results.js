@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import PerfectScrollbar from 'react-perfect-scrollbar';
-import { format } from 'date-fns';
 import {
   Box,
   Button,
@@ -14,6 +13,16 @@ import {
   TableRow,
   Typography
 } from '@mui/material';
+
+const buttonStyle = {
+  fontSize: '12px',
+  bgcolor: '#dd003f',
+  color: '#fff',
+  '&:hover': {
+    bgcolor: '#3832A0',
+    color: '#fff'
+  }
+}
 
 export const CustomerListResults = ({ customerData, ...rest }) => {
   const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
@@ -58,7 +67,6 @@ export const CustomerListResults = ({ customerData, ...rest }) => {
   };
 
   const handlePageChange = (event, newPage) => {
-    console.log(newPage);
     setPage(newPage);
   };
 
@@ -97,7 +105,7 @@ export const CustomerListResults = ({ customerData, ...rest }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {customerData?.content?.filter(customer => customer.maLoaiNguoiDung === 'KhachHang').slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((customer) => (
+              {customerData?.content?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((customer) => (
                 <TableRow
                   hover
                   key={customer.taiKhoan}
@@ -135,7 +143,16 @@ export const CustomerListResults = ({ customerData, ...rest }) => {
                     {customer.maLoaiNguoiDung}
                   </TableCell>
                   <TableCell>
-                    <Button>Edit User</Button>
+                    <Button
+                      sx={{ ...buttonStyle, m: '5px' }}
+                    >
+                      Edit User
+                    </Button>
+                    <Button
+                      sx={{ ...buttonStyle, m: '5px' }}
+                    >
+                      Delete User
+                    </Button>
                   </TableCell>
                 </TableRow>
               ))}
@@ -146,7 +163,7 @@ export const CustomerListResults = ({ customerData, ...rest }) => {
       {customerData &&
         <TablePagination
           component="div"
-          count={customerData.content.filter(customer => customer.maLoaiNguoiDung === 'KhachHang').length}
+          count={customerData.content.length}
           onPageChange={handlePageChange}
           onRowsPerPageChange={handleLimitChange}
           page={page}

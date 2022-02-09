@@ -32,3 +32,9 @@
 
 7/2/2022 -@Author: Tuan
 - Fix lỗi đăng nhập admin
+
+9/2/2022 -@Author: Tuan
+- Tạo list danh sách cho trang Movies
+- Tạo trang Showtime (thông tin lịch chiếu)
+- Tạo form Add New User 
+- Xử lý lấy dữ liệu từ form
