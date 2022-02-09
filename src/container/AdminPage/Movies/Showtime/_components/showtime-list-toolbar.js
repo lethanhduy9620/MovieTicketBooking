@@ -4,10 +4,8 @@ import {
   Typography
 } from '@mui/material';
 
-export const CustomerListToolbar = (props) => (
-  <Box
-  // {...props}
-  >
+export const ShowtimeListToolbar = (props) => (
+  <Box {...props}>
     <Box
       sx={{
         alignItems: 'center',
@@ -21,16 +19,17 @@ export const CustomerListToolbar = (props) => (
         sx={{ m: 1 }}
         variant="h4"
       >
-        Customers
+        Showtimes
       </Typography>
       <Box sx={{ m: 1 }}>
         <Button
           color="primary"
           variant="contained"
-          sx={{ bgcolor: '#dd003f', fontSize: 14 }}
-          onClick={props.onAddModalOpen}
+          sx={{
+            bgcolor: '#dd003f', fontSize: 14
+          }}
         >
-          Add Customers
+          Add showtime
         </Button>
       </Box>
     </Box>

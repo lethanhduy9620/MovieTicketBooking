@@ -5,7 +5,7 @@ export default function ThePhim(props) {
 
     return (
         <div className="col-sm-12 col-md-6 col-lg-3 my-3">
-            <img src={phim.hinhAnh} alt={phim.tenPhim} />
+            <img src={phim.hinhAnh} alt={phim.tenPhim} style={{ height: '400px' }} />
             <div className="hvr-inner">
                 <a href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright" /> </a>
             </div>

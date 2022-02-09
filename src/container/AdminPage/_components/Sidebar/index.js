@@ -5,7 +5,6 @@ import { Box, Divider, Drawer, useMediaQuery, Typography } from '@mui/material';
 import { ChartBar as ChartBarIcon } from '../../icons/chart-bar';
 import { ShoppingBag as ShoppingBagIcon } from '../../icons/shopping-bag';
 import { Users as UsersIcon } from '../../icons/users';
-import { XCircle as XCircleIcon } from '../../icons/x-circle';
 import { NavItem } from './nav-item';
 
 const items = [
@@ -57,7 +56,6 @@ export default function Sidebar(props) {
                                 component="div"
                                 sx={{
                                     mr: 2,
-                                    // textAlign: 'center',
                                     pt: 3
                                 }}
                             >

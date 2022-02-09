@@ -19,7 +19,6 @@ export default function AuthPage(props) {
             ...state,
             [name]: value,
         });
-        console.log(state);
     };
 
     const dispatch = useDispatch();
