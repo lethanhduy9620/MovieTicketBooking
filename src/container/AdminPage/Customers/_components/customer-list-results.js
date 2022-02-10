@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import PerfectScrollbar from 'react-perfect-scrollbar';
-import { format } from 'date-fns';
 import {
   Box,
+  Button,
   Card,
   Checkbox,
   Table,
@@ -14,16 +14,26 @@ import {
   Typography
 } from '@mui/material';
 
-export const CustomerListResults = ({ customers, ...rest }) => {
+const buttonStyle = {
+  fontSize: '12px',
+  bgcolor: '#dd003f',
+  color: '#fff',
+  '&:hover': {
+    bgcolor: '#3832A0',
+    color: '#fff'
+  }
+}
+
+export const CustomerListResults = ({ customerData, ...rest }) => {
   const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
-  const [limit, setLimit] = useState(10);
+  const [rowsPerPage, setLimit] = useState(10);
   const [page, setPage] = useState(0);
 
   const handleSelectAll = (event) => {
     let newSelectedCustomerIds;
 
     if (event.target.checked) {
-      newSelectedCustomerIds = customers.map((customer) => customer.id);
+      newSelectedCustomerIds = customerData.content?.map((customer) => customer.taiKhoan);
     } else {
       newSelectedCustomerIds = [];
     }
@@ -31,12 +41,12 @@ export const CustomerListResults = ({ customers, ...rest }) => {
     setSelectedCustomerIds(newSelectedCustomerIds);
   };
 
-  const handleSelectOne = (event, id) => {
-    const selectedIndex = selectedCustomerIds.indexOf(id);
+  const handleSelectOne = (event, taiKhoan) => {
+    const selectedIndex = selectedCustomerIds.indexOf(taiKhoan);
     let newSelectedCustomerIds = [];
 
     if (selectedIndex === -1) {
-      newSelectedCustomerIds = newSelectedCustomerIds.concat(selectedCustomerIds, id);
+      newSelectedCustomerIds = newSelectedCustomerIds.concat(selectedCustomerIds, taiKhoan);
     } else if (selectedIndex === 0) {
       newSelectedCustomerIds = newSelectedCustomerIds.concat(selectedCustomerIds.slice(1));
     } else if (selectedIndex === selectedCustomerIds.length - 1) {
@@ -53,6 +63,7 @@ export const CustomerListResults = ({ customers, ...rest }) => {
 
   const handleLimitChange = (event) => {
     setLimit(event.target.value);
+    setPage(page)
   };
 
   const handlePageChange = (event, newPage) => {
@@ -60,7 +71,7 @@ export const CustomerListResults = ({ customers, ...rest }) => {
   };
 
   return (
-    <Card {...rest}>
+    <Card {...rest} >
       <PerfectScrollbar>
         <Box sx={{ minWidth: 1050 }}>
           <Table>
@@ -68,43 +79,42 @@ export const CustomerListResults = ({ customers, ...rest }) => {
               <TableRow>
                 <TableCell padding="checkbox">
                   <Checkbox
-                    checked={selectedCustomerIds.length === customers.length}
+                    checked={selectedCustomerIds.length === customerData?.content.length}
                     color="primary"
                     indeterminate={
                       selectedCustomerIds.length > 0
-                      && selectedCustomerIds.length < customers.length
+                      && selectedCustomerIds.length < customerData?.content.length
                     }
                     onChange={handleSelectAll}
                   />
                 </TableCell>
                 <TableCell>
-                  Name
+                  Account
                 </TableCell>
                 <TableCell>
                   Email
                 </TableCell>
                 <TableCell>
-                  Location
-                </TableCell>
-                <TableCell>
                   Phone
                 </TableCell>
                 <TableCell>
-                  Registration date
+                  Type
+                </TableCell>
+                <TableCell>
                 </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {customers.slice(0, limit).map((customer) => (
+              {customerData?.content?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((customer) => (
                 <TableRow
                   hover
-                  key={customer.id}
-                  selected={selectedCustomerIds.indexOf(customer.id) !== -1}
+                  key={customer.taiKhoan}
+                  selected={selectedCustomerIds.indexOf(customer.taiKhoan) !== -1}
                 >
                   <TableCell padding="checkbox">
                     <Checkbox
-                      checked={selectedCustomerIds.indexOf(customer.id) !== -1}
-                      onChange={(event) => handleSelectOne(event, customer.id)}
+                      checked={selectedCustomerIds.indexOf(customer.taiKhoan) !== -1}
+                      onChange={(event) => handleSelectOne(event, customer.taiKhoan)}
                       value="true"
                     />
                   </TableCell>
@@ -119,7 +129,7 @@ export const CustomerListResults = ({ customers, ...rest }) => {
                         color="textPrimary"
                         variant="body1"
                       >
-                        {customer.name}
+                        {customer.hoTen}
                       </Typography>
                     </Box>
                   </TableCell>
@@ -127,13 +137,22 @@ export const CustomerListResults = ({ customers, ...rest }) => {
                     {customer.email}
                   </TableCell>
                   <TableCell>
-                    {`${customer.address.city}, ${customer.address.state}, ${customer.address.country}`}
+                    {customer.soDt}
                   </TableCell>
                   <TableCell>
-                    {customer.phone}
+                    {customer.maLoaiNguoiDung}
                   </TableCell>
                   <TableCell>
-                    {format(customer.createdAt, 'dd/MM/yyyy')}
+                    <Button
+                      sx={{ ...buttonStyle, m: '5px' }}
+                    >
+                      Edit User
+                    </Button>
+                    <Button
+                      sx={{ ...buttonStyle, m: '5px' }}
+                    >
+                      Delete User
+                    </Button>
                   </TableCell>
                 </TableRow>
               ))}
@@ -141,16 +160,18 @@ export const CustomerListResults = ({ customers, ...rest }) => {
           </Table>
         </Box>
       </PerfectScrollbar>
-      <TablePagination
-        component="div"
-        count={customers.length}
-        onPageChange={handlePageChange}
-        onRowsPerPageChange={handleLimitChange}
-        page={page}
-        rowsPerPage={limit}
-        rowsPerPageOptions={[5, 10, 25]}
-        sx={{ fontSize: 14 }}
-      />
+      {customerData &&
+        <TablePagination
+          component="div"
+          count={customerData.content.length}
+          onPageChange={handlePageChange}
+          onRowsPerPageChange={handleLimitChange}
+          page={page}
+          rowsPerPage={rowsPerPage}
+          rowsPerPageOptions={[5, 10, 25]}
+          sx={{ fontSize: 14 }}
+        />
+      }
     </Card>
   );
 };

@@ -1,8 +1,21 @@
-import React, { Fragment } from 'react';
-import { Box, Container, Grid, Pagination } from '@mui/material';
-import { ProductListToolbar } from './_components/product-list-toolbar';
+import React, { Fragment, useEffect } from 'react';
+import { Box, Container } from '@mui/material';
+import { MovieListToolbar } from './_components/movie-list-toolbar';
+import { MovieListResults } from './_components/movie-list-results';
+import { actGetMovieData } from './modules/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import Loader from '../../PublicPage/components/Loader';
 
 export default function Movies() {
+    const loading = useSelector(state => state.movieReducer.loading);
+    const movieData = useSelector(state => state.movieReducer.movieData);
+
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(actGetMovieData());
+    }, [])
+
+    if (loading) return <Loader></Loader>
     return (
         <Fragment>
             <Box
@@ -13,26 +26,9 @@ export default function Movies() {
                 }}
             >
                 <Container maxWidth={false}>
-                    <ProductListToolbar />
-                    <Box sx={{ pt: 3 }}>
-                        <Grid
-                            container
-                            spacing={3}
-                        >
-                        </Grid>
-                    </Box>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                            pt: 3
-                        }}
-                    >
-                        <Pagination
-                            color="primary"
-                            count={3}
-                            size="small"
-                        />
+                    <MovieListToolbar />
+                    <Box sx={{ mt: 3 }}>
+                        <MovieListResults movieData={movieData} />
                     </Box>
                 </Container>
             </Box>

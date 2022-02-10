@@ -1,31 +1,33 @@
 import * as ActionType from './constants';
 
-let initialState = {
+const initialState = {
     loading: false,
-    data: null,
-    error: null,
+    customerData: null,
+    error: null
 };
 
-const dsNguoiDungReducer = (state = initialState, action) => {
+const customerReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ActionType.REQUEST_API_NGUOI_DUNG:
-            state.loading = true;
-            state.data = null;
-            state.error = null;
+        case ActionType.CUSTOMER_REQUEST: {
+            const stateNew = { ...state, loading: true }
+            state = stateNew;
             return { ...state };
-        case ActionType.REQUEST_DS_NGUOI_DUNG_SUCCESS:
-            state.loading = false;
-            state.data = action.payload;
-            state.error = null;
+        }
+
+        case ActionType.CUSTOMER_SUCCESS: {
+            const stateNew = { ...state, loading: false, customerData: action.payload }
+            state = stateNew;
             return { ...state };
-        case ActionType.REQUEST_DS_NGUOI_DUNG_FAIL:
-            state.loading = false;
-            state.data = null;
-            state.error = action.payload;
-            return { ...state };
+        }
+
+        case ActionType.CUSTOMER_FAILED: {
+            const stateNew = { ...state, loading: false, error: action.payload }
+            state = stateNew;
+            return { ...state }
+        }
         default:
-            return { ...state };
-    };
+            return state;
+    }
 };
 
-export default dsNguoiDungReducer;
+export default customerReducer;

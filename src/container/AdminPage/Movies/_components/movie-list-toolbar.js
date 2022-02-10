@@ -1,16 +1,10 @@
 import {
   Box,
   Button,
-  Card,
-  CardContent,
-  TextField,
-  InputAdornment,
-  SvgIcon,
   Typography
 } from '@mui/material';
-import { Search as SearchIcon } from '../../icons/search';
 
-export const ProductListToolbar = (props) => (
+export const MovieListToolbar = (props) => (
   <Box {...props}>
     <Box
       sx={{
@@ -31,7 +25,9 @@ export const ProductListToolbar = (props) => (
         <Button
           color="primary"
           variant="contained"
-          sx={{ bgcolor: '#dd003f', fontSize: 14 }}
+          sx={{
+            bgcolor: '#dd003f', fontSize: 14
+          }}
         >
           Add movies
         </Button>

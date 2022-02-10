@@ -56,7 +56,7 @@ export default function Navbar(props) {
                         <UserCircleIcon fontSize="small" />
                     </Avatar>
                     <Typography sx={{ color: '#000' }}>
-                        Admin
+                        {JSON.parse(localStorage.getItem('UserAdmin')).content?.hoTen}
                     </Typography>
                 </Toolbar>
             </NavbarRoot>

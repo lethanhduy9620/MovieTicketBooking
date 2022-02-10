@@ -1,3 +1,3 @@
-export const REQUEST_API_NGUOI_DUNG = "@NguoiDung/REQUEST_API_NGUOI_DUNG";
-export const REQUEST_DS_NGUOI_DUNG_SUCCESS = "@NguoiDung/REQUEST_DS_NGUOI_DUNG_SUCCESS";
-export const REQUEST_DS_NGUOI_DUNG_FAIL = "@NguoiDung/REQUEST_DS_NGUOI_DUNG_FAIL";
+export const CUSTOMER_REQUEST = '@CustomerRequest/CUSTOMER_REQUEST';
+export const CUSTOMER_SUCCESS = '@CustomerSuccess/CUSTOMER_SUCCESS';
+export const CUSTOMER_FAILED = '@CustomerFailed/CUSTOMER_FAILED';

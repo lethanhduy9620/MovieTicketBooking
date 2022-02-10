@@ -1,58 +1,33 @@
 import * as ActionType from './constants';
 import api from '../../../../utils/apiUtils';
 
-export const actFetchDSNguoiDung = () => {
+export const actCustomerDataGet = () => {
     return (dispatch) => {
-        //
-        dispatch(actRequestDSNguoiDung());
+        dispatch(actCustomerDataRequest());
 
-        //call api to server
-        api.get('QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang?MaNhom=GP05&soTrang=1&soPhanTuTrenTrang=10')
-            .then((result) => {
-                // console.log(result.data.content);
-                dispatch(actRequestDSNguoiDungSuccess(result.data.content));
-            })
-            .catch((error) => {
-                dispatch(actRequestDSNguoiDungFail(error.message));
-            });
-    };
-};
-
-export const actPostThongTinNguoiDung = () => {
-    return (dispatch) => {
-        //
-        dispatch(actRequestDSNguoiDung());
-
-
-        // 9/2/2022 - Đang làm đến đây
-        //call api to server
-        // api.get('QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang?MaNhom=GP05&soTrang=1&soPhanTuTrenTrang=10')
-        //     .then((result) => {
-        //         // console.log(result.data.content);
-        //         dispatch(actRequestDSNguoiDungSuccess(result.data.content));
-        //     })
-        //     .catch((error) => {
-        //         dispatch(actRequestDSNguoiDungFail(error.message));
-        //     });
-    };
+        api
+            .get('QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP05')
+            .then(result => dispatch(actCustomerDataSuccess(result.data)))
+            .catch(error => dispatch(actCustomerDataFailed(error)))
+    }
 }
 
-const actRequestDSNguoiDung = () => {
-    return {
-        type: ActionType.REQUEST_API_NGUOI_DUNG,
-    };
+const actCustomerDataRequest = () => {
+    return ({
+        type: ActionType.CUSTOMER_REQUEST,
+    });
 };
 
-const actRequestDSNguoiDungSuccess = (data) => {
-    return {
-        type: ActionType.REQUEST_DS_NGUOI_DUNG_SUCCESS,
+const actCustomerDataSuccess = (data) => {
+    return ({
+        type: ActionType.CUSTOMER_SUCCESS,
         payload: data,
-    };
+    });
 };
 
-const actRequestDSNguoiDungFail = (error) => {
-    return {
-        type: ActionType.REQUEST_DS_NGUOI_DUNG_FAIL,
+const actCustomerDataFailed = (error) => {
+    return ({
+        type: ActionType.CUSTOMER_FAILED,
         payload: error,
-    };
+    });
 };

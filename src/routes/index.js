@@ -9,6 +9,7 @@ import AdminPage from "../container/AdminPage";
 import Dashboard from "../container/AdminPage/Dashboard";
 import Customers from "../container/AdminPage/Customers";
 import Movies from "../container/AdminPage/Movies";
+import MovieShowtime from "../container/AdminPage/Movies/Showtime";
 
 
 //routes of Public pages for Users
@@ -73,6 +74,11 @@ const routesAdmin = [
         exact: false,
         path: '/movies',
         component: Movies
+    },
+    {
+        exact: false,
+        path: '/showtime/:maPhim',
+        component: MovieShowtime
     }
 ]
 
