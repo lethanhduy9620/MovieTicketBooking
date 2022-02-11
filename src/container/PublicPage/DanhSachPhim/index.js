@@ -31,7 +31,7 @@ export default function DanhSachPhim(props) {
     return (
         <>
             <HeaderDSPhim url={url} />
-            <div className="page-single">
+            <div className="page-single page-single-cyber">
                 <div className="container">
                     <div className="row ipad-width">
                         <div className="col-md-12 col-sm-12 col-xs-12">

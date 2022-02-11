@@ -10,6 +10,53 @@
     width: auto;
 }
 
+
+/* Trang Chi Tiết Phim */
+.page-single.page-single-cyber {
+    padding-top: 125px;
+}
+
+ul li {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.6rem;
+    color: #abb7c4;
+    font-weight: 400;
+    text-transform: none;
+    line-height: 24px !important;
+    padding: 10px 0;
+}
+
+.title-cyber {
+    font-family: "Dosis", sans-serif;
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+
+p.describe-cyber {
+    font-size: 1.6rem;
+    color: #abb7c4;
+    font-weight: 400;
+    line-height: 24px !important;
+}
+
+button.btn.btn-cyber {
+    padding: 6px 25px;
+    color: #fff;
+    background-color: #dd003f;
+    border: none;
+    font-family: 'Dosis', sans-serif;
+    font-size: 1.6rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+button.btn.btn-cyber:hover {
+    color: #000;
+    background-color: #dcf836;
+    box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+}
+
 /* @ChiTietPhim - Lich Chieu */
 .lich-chieu-cyber {
     position: fixed;
@@ -43,17 +90,22 @@
     background-color: black;
 }
 
-.navbar-lich-chieu {
+/* .navbar-lich-chieu {
     width: 75%;
-}
+} */
 
 .lich-chieu-chi-tiet {
     margin-top: 4rem;
 }
 
+.chi-tiet-header {
+    background-color: #ffc10775;
+}
+
 .lich-chieu-chi-tiet .chi-tiet-header {
-    width: 25%;
-    border: 1px black solid;
+    width: fit-content;
+    padding: 0.5rem 1rem;
+    border: 1px gray solid;
     border-bottom: none;
 }
 
@@ -73,24 +125,115 @@
     flex-direction: row;
     flex-wrap: wrap;
     padding: 2rem;
-    border: 1px solid black;
+    border: 1px solid gray;
     margin-right: 3rem;
+    min-width: 330px;
+    margin: 0;
+    margin-bottom: 2rem;
+    align-items: center;
 }
 
 .lich-chieu-chi-tiet .chi-tiet-content li {
     margin: 0 2rem;
 }
 
+.lich-chieu-chi-tiet .chi-tiet-content li a.btn {
+    font-size: 1.4rem;
+    font-weight: 600;
+    background-color: #ffc10775;
+    border-color: #ffc10775;
+}
+
+.lich-chieu-cyber .react-datepicker-wrapper {
+    height: 100%;
+}
+
+.lich-chieu-cyber .react-datepicker__input-container {
+    height: 100%;
+}
+
+.select-box-container select {
+    font-size: 1.6rem;
+    border: 1px solid black;
+    color: black;
+}
+
+.select-box-container select:focus {
+    border: 1px solid black;
+}
+
+
+.react-datepicker__input-container {
+    position: relative;
+}
+
+.react-datepicker__input-container input {
+    width: 100% !important;
+    height: 100% !important;
+    font-size: 1.6rem;
+    padding: 0.375rem 0.75rem;
+    border: 1px solid black;
+}
+
+.react-datepicker__input-container input:focus-visible {
+    outline-width: 0px;
+}
+
+.react-datepicker__input-container::after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f073";
+    position: absolute;
+    top: 0.5rem;
+    right: 2rem;
+    height: 100%;
+}
+
+.react-datepicker {
+    transform: scale(1.25, 1.25);
+}
+
 /*Trang Dang Nhap */
 .form-container {
     width: 50%;
     padding: 0 5rem;
+    font-family: "Dosis", sans-serif;
 }
 
 .form-container .form-title {
+    font-family: "Dosis", sans-serif;
+    color: #ffffff;
+    font-weight: 700;
     margin-bottom: 3rem;
+}
+
+.form-container label {
+    color: #fff;
+    font-size: 1.6rem;
+}
+
+.form-container input {
+    font-size: 1.6rem;
+    border: 1px solid black;
+    color: black;
+}
+
+.form-container input::placeholder {
+    font-family: "Dosis", sans-serif;
 }
 
 .form-container form div.form-group {
     margin-bottom: 1.5rem;
+}
+
+.form-container a {
+    color: #fff;
+    padding-left: 1rem;
+}
+
+
+@media only screen and (max-width: 960px) {
+    .discount-container {
+        display: none;
+    }
 }

@@ -13,7 +13,7 @@ export default function HeaderDSPhim(props) {
                             <h1>{tenTrang}</h1>
                             <ul className="breadcumb">
                                 <li className="active"><a href="#">Home</a></li>
-                                <li> <span className="ion-ios-arrow-right" />{tenTrang}</li>
+                                <li><span>{'>'}</span>{tenTrang}</li>
                             </ul>
                         </div>
                     </div>

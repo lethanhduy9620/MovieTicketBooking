@@ -17,7 +17,7 @@ export default function CardsRapChieu(props) {
                             return (
                                 <li key={index}>
                                     <Link
-                                        className="btn btn-success shadow-none"
+                                        className="btn btn-warning shadow-none"
                                         to={`/dat-ve/${suatChieu.maLichChieu}`}
                                     >{suatChieu.gioChieu}</Link>
                                 </li>
