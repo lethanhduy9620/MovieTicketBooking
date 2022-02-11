@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { actCustomerDataGet, actCustomerDataXoaTaiKhoan } from './../modules/actions';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import {
   Box,
@@ -24,7 +26,9 @@ const buttonStyle = {
   }
 }
 
-export const CustomerListResults = ({ customerData, ...rest }) => {
+export const CustomerListResults = (props) => {
+  const dispatch = useDispatch();
+  const { customerData, onEditModalOpen } = props;
   const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
   const [rowsPerPage, setLimit] = useState(10);
   const [page, setPage] = useState(0);
@@ -70,8 +74,13 @@ export const CustomerListResults = ({ customerData, ...rest }) => {
     setPage(newPage);
   };
 
+  const handleOnClickDelete = (taiKhoan) => {
+    dispatch(actCustomerDataXoaTaiKhoan(taiKhoan));
+    dispatch(actCustomerDataGet());
+  }
+
   return (
-    <Card {...rest} >
+    <Card >
       <PerfectScrollbar>
         <Box sx={{ minWidth: 1050 }}>
           <Table>
@@ -129,7 +138,7 @@ export const CustomerListResults = ({ customerData, ...rest }) => {
                         color="textPrimary"
                         variant="body1"
                       >
-                        {customer.hoTen}
+                        {customer.taiKhoan}
                       </Typography>
                     </Box>
                   </TableCell>
@@ -145,11 +154,13 @@ export const CustomerListResults = ({ customerData, ...rest }) => {
                   <TableCell>
                     <Button
                       sx={{ ...buttonStyle, m: '5px' }}
+                      onClick={() => { onEditModalOpen(customer.taiKhoan) }}
                     >
                       Edit User
                     </Button>
                     <Button
                       sx={{ ...buttonStyle, m: '5px' }}
+                      onClick={() => { handleOnClickDelete(customer.taiKhoan) }}
                     >
                       Delete User
                     </Button>
@@ -160,7 +171,8 @@ export const CustomerListResults = ({ customerData, ...rest }) => {
           </Table>
         </Box>
       </PerfectScrollbar>
-      {customerData &&
+      {
+        customerData &&
         <TablePagination
           component="div"
           count={customerData.content.length}
@@ -172,7 +184,7 @@ export const CustomerListResults = ({ customerData, ...rest }) => {
           sx={{ fontSize: 14 }}
         />
       }
-    </Card>
+    </Card >
   );
 };
 

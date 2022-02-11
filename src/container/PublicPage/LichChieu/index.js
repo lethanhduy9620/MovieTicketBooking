@@ -103,32 +103,31 @@ const LichChieu = forwardRef(({ }, lichChieuEvent) => {
     return (
         <div className='lich-chieu-cyber hidden' ref={lichChieuEvent}>
             <div className='lich-chieu-content'>
-                Lich chieu
+                <h3 className="title-cyber">Lịch chiếu</h3>
                 <div className='navbar-lich-chieu row m-0'>
 
                     {/* Selectbox vi tri (API không trả về nên bỏ qua) */}
-                    <div className='selex-box-container col-3'>
+                    <div className='select-box-container col-12 col-lg-3 my-3 my-lg-0'>
                         <select value={optionState.viTri} name='viTri' className="form-control shadow-none" onChange={onChangeSelect}>
                             <option value={'Tất cả'}>Vị trí</option>
                             <option value={'TPHCM'}>Hồ Chí Minh</option>
-                            <option value={'HN'}>Hà Nội</option>
                         </select>
                     </div>
 
                     {/* DateTime Picker */}
-                    <div className='col-3'>
-                        <DatePicker name='ngayChieu' selected={startDate} onChange={(date, event) => { setStartDate(date); onChangeSelect(event) }} />
+                    <div className='select-box-container col-12 col-lg-3 my-3 my-lg-0'>
+                        <DatePicker name='ngayChieu' selected={startDate} onChange={(date, event) => { setStartDate(date); onChangeSelect(event) }} dateFormat="dd/MM/yyyy" />
                     </div>
 
                     {/* SelectBox he thong rap */}
-                    <div className='selex-box-container col-3'>
+                    <div className='select-box-container col-12 col-lg-3 my-3 my-lg-0'>
                         <select value={optionState.heThongRap} name='heThongRap' className="form-control shadow-none" onChange={onChangeSelect}>
                             {data?.heThongRapChieu && renderHeThongRapOptions(data.heThongRapChieu, 'Tất cả hệ thống')}
                         </select>
                     </div>
 
                     {/* SelectBox rap phim */}
-                    <div className='selex-box-container col-3'>
+                    <div className='select-box-container col-12 col-lg-3 my-3 my-lg-0'>
                         <select value={optionState.maCumRap} name='maCumRap' className="form-control shadow-none" onChange={onChangeSelect}>
                             {data?.heThongRapChieu && renderTenCumRapOptions(data.heThongRapChieu, optionState)}
                         </select>

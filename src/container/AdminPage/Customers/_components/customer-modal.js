@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Box, Typography, TextField, Button, MenuItem } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { actCustomerDataAdd, actCustomerDataCapNhatTaiKhoan, actCustomerDataGet } from './../modules/actions';
 
 const style = {
     position: 'absolute',
@@ -54,7 +56,9 @@ const buttonStyle = {
 }
 
 export default function CustomerModal(props) {
-    const { modalState, onClose } = props;
+    const dispatch = useDispatch();
+
+    const { modalState, onClose, customerDataEdit } = props;
 
     const [userInfo, setUserInfo] = useState({
         taiKhoan: "",
@@ -62,17 +66,41 @@ export default function CustomerModal(props) {
         email: "",
         soDt: "",
         maNhom: "GP05",
-        maLoaiNguoiDung: "KhachHang",
+        maLoaiNguoiDung: "",
         hoTen: ""
     });
 
-    const handleOnchange = (event) => {
+    const [prevState, setNewState] = useState(null);
+    if (customerDataEdit && customerDataEdit?.content[0] != prevState) {
+        setNewState(customerDataEdit.content[0]);
+        setUserInfo({
+            taiKhoan: customerDataEdit.content[0].taiKhoan,
+            matKhau: customerDataEdit.content[0].matKhau,
+            email: customerDataEdit.content[0].email,
+            soDt: customerDataEdit.content[0].soDt,
+            maLoaiNguoiDung: customerDataEdit.content[0].maLoaiNguoiDung,
+            hoTen: customerDataEdit.content[0].hoTen,
+            maNhom: 'GP05',
+        });
+    }
+
+    function handleOnchange(event) {
         const { name, value } = event.target;
         setUserInfo({
             ...userInfo,
             [name]: value,
         });
-        console.log(userInfo);
+    }
+
+    const handleOnSubmit = (flag) => {
+        if (flag === "ADD") {
+            dispatch(actCustomerDataAdd(userInfo));
+        }
+        else {
+
+            dispatch(actCustomerDataCapNhatTaiKhoan(userInfo));
+        }
+        dispatch(actCustomerDataGet());
     }
 
     if (modalState.addCustomer) return (
@@ -126,6 +154,7 @@ export default function CustomerModal(props) {
                             label="Email"
                             margin="normal"
                             name="email"
+                            noWrap
                             onChange={handleOnchange}
                             type="text"
                             variant="outlined"
@@ -163,6 +192,7 @@ export default function CustomerModal(props) {
                         <Button
                             fullWidth
                             sx={buttonStyle}
+                            onClick={() => { handleOnSubmit('ADD') }}
                         >Add Customer</Button>
                     </form>
                 </Box>
@@ -180,10 +210,93 @@ export default function CustomerModal(props) {
                 <Typography id="modal-modal-title" variant="h6" component="h2">
                     EDIT CUSTOMER
                 </Typography>
-                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                </Typography>
+                <Box id="modal-modal-description" sx={{ mt: 2 }}>
+                    <form>
+                        <TextField
+                            fullWidth
+                            label="Account"
+                            margin="normal"
+                            name="taiKhoan"
+                            onChange={handleOnchange}
+                            value={userInfo.taiKhoan}
+                            type="text"
+                            variant="outlined"
+                            sx={inputStyle}
+                        >
+                        </TextField>
+                        <TextField
+                            fullWidth
+                            label="Password"
+                            margin="normal"
+                            name="matKhau"
+                            value={userInfo.matKhau}
+                            onChange={handleOnchange}
+                            type="password"
+                            variant="outlined"
+                            sx={inputStyle}
+                        >
+                        </TextField>
+                        <TextField
+                            fullWidth
+                            label="Name"
+                            margin="normal"
+                            name="hoTen"
+                            value={userInfo.hoTen}
+                            onChange={handleOnchange}
+                            type="text"
+                            variant="outlined"
+                            sx={inputStyle}
+                        >
+                        </TextField>
+                        <TextField
+                            fullWidth
+                            label="Email"
+                            margin="normal"
+                            name="email"
+                            value={userInfo.email}
+                            onChange={handleOnchange}
+                            type="text"
+                            variant="outlined"
+                            sx={inputStyle}
+                        >
+                        </TextField>
+                        <TextField
+                            fullWidth
+                            label="Phone"
+                            margin="normal"
+                            name="soDt"
+                            value={userInfo.soDt}
+                            onChange={handleOnchange}
+                            type="text"
+                            variant="outlined"
+                            sx={inputStyle}
+                        >
+                        </TextField>
+                        <TextField
+                            fullWidth
+                            label="User Type"
+                            margin="normal"
+                            name="maLoaiNguoiDung"
+                            value={userInfo.maLoaiNguoiDung}
+                            onChange={handleOnchange}
+                            select
+                            variant="outlined"
+                            sx={inputStyle}
+                        >
+                            {userType.map((option) => (
+                                <MenuItem key={option.value} value={option.value}>
+                                    {option.label}
+                                </MenuItem>
+                            ))}
+                        </TextField>
+                        <Button
+                            fullWidth
+                            sx={buttonStyle}
+                            onClick={() => { handleOnSubmit('EDIT') }}
+                        >Edit Customer</Button>
+                    </form>
+                </Box>
             </Box>
-        </Modal>
+        </Modal >
     )
 }
