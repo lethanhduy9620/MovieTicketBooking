@@ -1,15 +1,6 @@
 import PublicPage from "../container/PublicPage";
-import TrangHome from "../container/PublicPage/TrangHome";
-import DanhSachPhim from "../container/PublicPage/DanhSachPhim";
-import ChiTietPhim from "../container/PublicPage/ChiTietPhim";
-import DangNhap from "../container/PublicPage/DangNhapDangKy/DangNhap/DangNhap";
-import DangKy from "../container/PublicPage/DangNhapDangKy/DangKy/DangKy";
-import DatVe from "../container/PublicPage/DatVe";
 import AdminPage from "../container/AdminPage";
-import Dashboard from "../container/AdminPage/Dashboard";
-import Customers from "../container/AdminPage/Customers";
-import Movies from "../container/AdminPage/Movies";
-import MovieShowtime from "../container/AdminPage/Movies/Showtime";
+import { lazy } from "react";
 
 //routes of Public pages for Users
 const routesHome = [
@@ -17,43 +8,47 @@ const routesHome = [
     //Trang Home
     exact: true,
     path: "/",
-    component: TrangHome,
+    component: lazy(() => import("../container/PublicPage/TrangHome")),
   },
   {
     //Trang Phim Dang Chieu
     exact: false,
     path: "/phim-dang-chieu",
-    component: DanhSachPhim,
+    component: lazy(() => import("../container/PublicPage/DanhSachPhim")),
   },
   {
     //Trang Phim Sap Chieu
     exact: false,
     path: "/phim-sap-chieu",
-    component: DanhSachPhim,
+    component: lazy(() => import("../container/PublicPage/DanhSachPhim")),
   },
   {
     //Trang Chi Tiet Phim
     exact: false,
     path: "/chi-tiet-phim/:id",
-    component: ChiTietPhim,
+    component: lazy(() => import("../container/PublicPage/ChiTietPhim")),
   },
   {
     //Trang Dang Nhap
     exact: false,
     path: "/dang-nhap",
-    component: DangNhap,
+    component: lazy(() =>
+      import("../container/PublicPage/DangNhapDangKy/DangNhap/DangNhap")
+    ),
   },
   {
     //Trang Dang KY
     exact: false,
     path: "/dang-ky",
-    component: DangKy,
+    component: lazy(() =>
+      import("../container/PublicPage/DangNhapDangKy/DangKy/DangKy")
+    ),
   },
   {
     // Trang Dat Ve
     exact: false,
     path: "/dat-ve/:maPhim",
-    component: DatVe,
+    component: lazy(() => import("../container/PublicPage/DatVe")),
   },
 ];
 
@@ -62,22 +57,22 @@ const routesAdmin = [
   {
     exact: false,
     path: "/dashboard",
-    component: Dashboard,
+    component: lazy(() => import("../container/AdminPage/Dashboard")),
   },
   {
     exact: false,
     path: "/customers",
-    component: Customers,
+    component: lazy(() => import("../container/AdminPage/Customers")),
   },
   {
     exact: false,
     path: "/movies",
-    component: Movies,
+    component: lazy(() => import("../container/AdminPage/Movies")),
   },
   {
     exact: false,
     path: "/showtime/:maPhim",
-    component: MovieShowtime,
+    component: lazy(() => import("../container/AdminPage/Movies/Showtime")),
   },
 ];
 

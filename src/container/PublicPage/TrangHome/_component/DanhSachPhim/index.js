@@ -1,15 +1,11 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import Loader from "../../../components/Loader";
 import ThePhim from "../../../components/ThePhim";
 import clsx from "clsx";
 import { Nav, NavItem, TabContent, TabPane } from "reactstrap";
 import "./style_DanhSachPhim.scss";
+import { useSelector } from "react-redux";
 
 export default function DanhSachPhimComp() {
-  const loading = useSelector(
-    (state) => state.homePhimDangChieuReducer.loading
-  );
   const dataPhim = useSelector(
     (state) => state.homePhimDangChieuReducer.dataPhim
   );
@@ -34,7 +30,6 @@ export default function DanhSachPhimComp() {
     }
   };
 
-  if (loading) return <Loader />;
   return (
     <section id="movieListComp" className="danh-sach-phim-wrapper">
       <div className="container-lg">
@@ -67,7 +62,6 @@ export default function DanhSachPhimComp() {
         </Nav>
         <TabContent activeTab={activeTab}>
           <TabPane tabId={1}>
-            {/* {const classNameThePhim = "col-sm-12 col-md-6 col-lg-3";} */}
             <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 movie-card-container">
               {renderDSPhimDangChieu()}
             </div>

@@ -8,6 +8,16 @@ import ShowtimeComp from "./_component/ShowtimeComp";
 import { actFetchDSPhimDangChieu } from "../DanhSachPhim/modules/actions";
 
 export default function ChiTietPhim(props) {
+  const loadingMovieDetail = useSelector(
+    (state) => state.chiTietPhimReducer.loading
+  );
+  const loadingShowtimeData = useSelector(
+    (state) => state.lichChieuPhimReducer.loading
+  );
+  const loadingDSPhimDangChieu = useSelector(
+    (state) => state.dsPhimDangChieuReducer.loading
+  );
+
   const dispatch = useDispatch();
 
   const showtimeData = useSelector((state) => state.lichChieuPhimReducer.data);
@@ -23,6 +33,9 @@ export default function ChiTietPhim(props) {
     //Call APi to get current shown movies
     dispatch(actFetchDSPhimDangChieu());
   }, []);
+
+  if (loadingMovieDetail || loadingShowtimeData || loadingDSPhimDangChieu)
+    return <Loader />;
 
   return (
     <section id="movieDetailPage">
