@@ -15,7 +15,7 @@ export default function HeaderDSPhim(props) {
             <h1>{tenTrang}</h1>
             <ul className="breadcumb">
               <li>
-                <a href="#">Home</a>
+                <Link to="/">Home</Link>
                 <span>{">"}</span>
               </li>
               <li className="active">{tenTrang}</li>
