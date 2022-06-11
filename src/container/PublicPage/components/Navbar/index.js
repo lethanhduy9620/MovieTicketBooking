@@ -1,183 +1,92 @@
-import React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
-import Link from '@mui/material/Link';
-import { Link as RouterLink } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Navbar, NavbarToggler, Collapse, Nav } from "reactstrap";
+import clsx from "clsx";
+import { Link, NavLink } from "react-router-dom";
+import "./style_Navbar.scss";
+import "./../../../_components/hamburgetIcon/style_hamburgerIcon.css";
+import { FaSignInAlt } from "react-icons/fa";
 
-export default function Navbar() {
-    const pages = [
-        {
-            name: 'TRANG CHỦ',
-            path: '/'
-        },
-        {
-            name: 'PHIM ĐANG CHIẾU',
-            path: '/phim-dang-chieu'
-        },
-        {
-            name: 'PHIM SẮP CHIẾU',
-            path: '/phim-sap-chieu'
-        }
-    ];
+const dataNavbar = [
+  {
+    name: "Phim đang chiếu",
+    link: "/phim-dang-chieu",
+  },
+  {
+    name: "Phim sắp chiếu",
+    link: "/phim-sap-chieu",
+  },
+];
 
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
+export default function NavbarComp() {
+  const [isOpen, setOpen] = useState(false);
+  const [isSignIn, setStateSignIn] = useState(false);
 
-    const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget);
-    };
+  useEffect(() => {
+    if (localStorage.getItem("GeneralUser")) {
+      setStateSignIn(true);
+    }
+  }, []);
 
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
-    };
+  const toggleNavbar = () => {
+    setOpen(!isOpen);
+  };
 
+  const renderNavItem = () => {
+    return dataNavbar.map((navbarItem, index) => {
+      return (
+        <li className="nav-item" key={index}>
+          <NavLink className="nav-link" to={navbarItem.link}>
+            {navbarItem.name}
+          </NavLink>
+        </li>
+      );
+    });
+  };
 
-    return (
-        <AppBar position="absolute" sx={{ bgcolor: 'transparent', boxShadow: 'none' }}>
-            <Container maxWidth="lg">
-                <Toolbar disableGutters>
-                    <Link
-                        component={RouterLink}
-                        to='/'>
-                        <Typography
-                            variant="h6"
-                            noWrap
-                            component="div"
-                            sx={{
-                                mr: 2,
-                                display: {
-                                    xs: 'none',
-                                    md: 'flex'
-                                },
-                                py: 3
-                            }}
-                        >
-                            <img src='/images/logo1.png' alt='' />
-                        </Typography>
-                    </Link>
-
-                    <Box
-                        sx={{
-                            flexGrow: 1,
-                            display: {
-                                xs: 'flex',
-                                md: 'none'
-                            }
-                        }}>
-                        <IconButton
-                            size="large"
-                            aria-label="account of current user"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
-                            onClick={handleOpenNavMenu}
-                            color="inherit"
-                        >
-                            <MenuIcon sx={{ fontSize: '3rem', }} />
-                        </IconButton>
-                        <Menu
-                            id="menu-appbar"
-                            anchorEl={anchorElNav}
-                            anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'left',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'left',
-                            }}
-                            open={Boolean(anchorElNav)}
-                            onClose={handleCloseNavMenu}
-                            sx={{
-                                display: {
-                                    xs: 'block',
-                                    md: 'none'
-                                },
-                            }}
-                        >
-                            {pages.map((page, index) => (
-                                <MenuItem key={index} onClick={handleCloseNavMenu} component={RouterLink} to={page.path}>
-                                    <Typography textAlign="center" sx={{ fontSize: 14 }}>{page.name}</Typography>
-                                </MenuItem>
-                            ))}
-                        </Menu>
-                    </Box>
-                    <Link
-                        component={RouterLink}
-                        to='/'
-                        sx={{
-                            flexGrow: 1,
-                            display: {
-                                xs: 'flex',
-                                md: 'none'
-                            },
-                            py: 3
-                        }}>
-                        <Typography
-                            variant="h6"
-                            noWrap
-                            component="div"
-                        >
-                            <img src='/images/logo1.png' alt='' />
-                        </Typography>
-                    </Link>
-                    <Box
-                        sx={{
-                            flexGrow: 1,
-                            display: {
-                                xs: 'none',
-                                md: 'flex'
-                            }
-                        }}
-                    >
-                        {pages.map((page, index) => (
-                            <Button
-                                key={index}
-                                onClick={handleCloseNavMenu}
-                                component={RouterLink}
-                                to={page.path}
-                                sx={{
-                                    my: 2,
-                                    color: '#abb7c4',
-                                    display: 'block',
-                                    fontFamily: "'Dosis', sans-serif",
-                                    fontSize: '1.4rem',
-                                    fontWeight: 'bold',
-                                    '&:hover': {
-                                        color: '#dcf836',
-                                    }
-                                }}
-                            >
-                                {page.name}
-                            </Button>
-                        ))}
-                    </Box>
-
-                    <Box sx={{ flexGrow: 0 }}>
-                        <Button variant="contained" sx={{
-                            borderRadius: '25px',
-                            backgroundColor: '#dd003f',
-                            fontFamily: "'Dosis', sans-serif",
-                            fontSize: '1.4rem',
-                            fontWeight: 'bold',
-                            '&:hover': {
-                                bgcolor: '#dcf836',
-                            }
-                        }}
-                            href="/dang-nhap"
-                        >
-                            Đăng nhập
-                        </Button>
-                    </Box>
-                </Toolbar>
-            </Container>
-        </AppBar>
-    )
+  return (
+    <Navbar
+      id="navbarComp"
+      container="lg"
+      expand="md"
+      className="navbar m-0 border-0 py-0"
+    >
+      {/* Navbrand */}
+      <Link className="navbar-brand" to="/">
+        <img src="/images/logo1.png" alt="" />
+      </Link>
+      <NavbarToggler
+        className={clsx("toggle-button", isOpen && "change")}
+        onClick={() => toggleNavbar()}
+      >
+        <div className="bar1"></div>
+        <div className="bar2"></div>
+        <div className="bar3"></div>
+      </NavbarToggler>
+      <Collapse navbar isOpen={isOpen}>
+        <Nav className="me-auto" navbar>
+          {renderNavItem()}
+        </Nav>
+        {!isSignIn && (
+          <Link className="btn" to="/dang-nhap">
+            Đăng nhập
+          </Link>
+        )}
+        {isSignIn && (
+          <>
+            <div className="account">
+              Xin chào {JSON.parse(localStorage.getItem("GeneralUser")).hoTen}
+              <span
+                onClick={() => {
+                  localStorage.removeItem("GeneralUser");
+                  setStateSignIn(false);
+                }}
+              >
+                <FaSignInAlt />
+              </span>
+            </div>
+          </>
+        )}
+      </Collapse>
+    </Navbar>
+  );
 }

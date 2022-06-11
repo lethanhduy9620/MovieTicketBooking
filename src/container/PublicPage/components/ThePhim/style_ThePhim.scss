@@ -1,0 +1,31 @@
+@import "./../../../../scss/variables.scss";
+
+.movie-card-container {
+  gap: 3rem 0rem;
+
+  .movie-card {
+    text-align: center;
+
+    img {
+      height: 18.75rem;
+      width: auto;
+      border-radius: 1rem;
+    }
+
+    .movie-name-container {
+      padding-top: 0.5rem;
+
+      a {
+        color: $primary-text-color;
+
+        &:hover {
+          color: $primary-theme-color-hover;
+        }
+      }
+    }
+
+    a:hover + .movie-name-container a {
+      color: $primary-theme-color-hover;
+    }
+  }
+}

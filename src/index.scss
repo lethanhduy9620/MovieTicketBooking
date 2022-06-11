@@ -1,0 +1,40 @@
+@import "./scss/variables.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-family !important;
+}
+
+header,
+body {
+  font-size: 1rem;
+}
+
+a {
+  color: $primary-text-color;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+.btn {
+  background-color: $primary-bgcolor-button;
+  font-size: 1rem;
+  color: $primary-text-color;
+  cursor: pointer;
+}
+
+.btn:hover {
+  color: $primary-text-color-hover;
+  background-color: $primary-bgcolor-button-hover;
+}

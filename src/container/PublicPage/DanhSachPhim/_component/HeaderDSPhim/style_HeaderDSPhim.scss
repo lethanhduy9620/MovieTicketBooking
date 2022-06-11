@@ -1,0 +1,57 @@
+@import "../../../../../scss/variables.scss";
+
+#movieListPage {
+  .header-wrapper {
+    height: 17.5rem;
+    background: url(../../../../../images/user-hero-bg.jpg);
+    background-position: center;
+    text-align: center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .container {
+      height: 100%;
+
+      .row {
+        height: 100%;
+        align-items: center;
+      }
+    }
+
+    .title-container {
+      h1 {
+        font-size: 1.875rem;
+        color: $primary-text-color;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 1.25rem;
+      }
+
+      ul.breadcumb {
+        margin: 0;
+        padding: 0;
+
+        li {
+          display: inline-block;
+          text-transform: capitalize;
+        }
+
+        li:first-child {
+          color: $secondary-text-color;
+        }
+
+        span,
+        a {
+          padding-right: 0.625rem;
+        }
+
+        li:last-child.active {
+          color: $secondary-text-color-active;
+        }
+      }
+    }
+  }
+}

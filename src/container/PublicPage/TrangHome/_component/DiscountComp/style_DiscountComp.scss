@@ -1,0 +1,22 @@
+@import "./../../../../../scss/variables.scss";
+
+#discountComp {
+  &.discount-wrapper {
+    background-color: $background-color-page;
+  }
+
+  h2.header {
+    display: inline-block;
+    padding-bottom: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $primary-text-color;
+    border-bottom: 2px solid $primary-text-color-hover;
+  }
+
+  .row {
+    .img-container {
+      text-align: center;
+    }
+  }
+}

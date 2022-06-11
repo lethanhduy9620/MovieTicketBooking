@@ -7,8 +7,6 @@ import AuthPage from "./container/AdminPage/AuthPage";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-
-
 function App() {
   return (
     <BrowserRouter>
@@ -20,7 +18,7 @@ function App() {
 
         <Route path="" component={PageNotFound} />
       </Switch>
-    </BrowserRouter >
+    </BrowserRouter>
   );
 }
 
